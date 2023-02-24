@@ -1,32 +1,28 @@
 package pl.javastart.task;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Shop {
     public static void main(String[] args) {
         ShoeBuilder builder = new ShoeBuilder();
-        Shoe[] shoes = new Shoe[3];
-        for (int i = 0; i < shoes.length; i++) {
-            shoes[i] = builder.createShoe();
-        }
-        for (int i = 0; i < shoes.length; i++) {
-            for (int j = 1; j < shoes.length; j++) {
-                if (shoes[i].equals(shoes[j])) {
-                    System.out.println("Duplikat");
-                    shoes[j] = builder.createShoe();
-                }
+        Scanner scanner = new Scanner(System.in);
+        final int maxSize = 3;
+        Shoe[] shoes = new Shoe[maxSize];
+        int index = 0;
+
+        while (index < maxSize) {
+            Shoe shoe = builder.createShoe();
+            if (Arrays.asList(shoes).contains(shoe)) {
+                System.out.println("Duplikat");
+                continue;
+            }
+            shoes[index] = shoe;
+            index++;
+            if (index == maxSize) {
+                break;
             }
         }
         System.out.println(Arrays.toString(shoes));
-    }
-
-    @Override
-    public int hashCode() {
-        return super.hashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
     }
 }

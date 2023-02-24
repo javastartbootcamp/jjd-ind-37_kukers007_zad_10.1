@@ -35,6 +35,7 @@ public class Shoe {
         return size == shoe.size && Objects.equals(producer, shoe.producer);
     }
 
+
     @Override
     public int hashCode() {
         return Objects.hash(producer, size);
@@ -46,5 +47,7 @@ public class Shoe {
                 "producer='" + producer + '\'' +
                 ", size=" + size +
                 '}';
+
     }
+
 }
